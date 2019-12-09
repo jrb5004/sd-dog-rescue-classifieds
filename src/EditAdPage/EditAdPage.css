@@ -1,0 +1,29 @@
+.EditAdForm form {
+    width: 40%;
+    padding: 2% 5%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+    border: 1px solid white;
+}
+
+.EditAdForm h2 {
+    text-align: center;
+}
+
+.EditAdForm form div {
+    margin: 3% auto;
+}
+
+.EditAdForm form input, textarea {
+    width: 60%;
+}
+
+.EditAdForm button {
+    margin: 0 8%;
+    width: 30%;
+}
+
+.DescriptionInput {
+    height: 80px;
+}

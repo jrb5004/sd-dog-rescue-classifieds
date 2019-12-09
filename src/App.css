@@ -1,0 +1,36 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+.App {
+    background-image: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+        url("./Images/sky.JPG");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.9;
+    overflow: auto;
+    min-height: 100vh;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #204759;
+}
+
+

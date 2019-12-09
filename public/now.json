@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "jrb5004-sd-dog-rescue",
+    "name": "sd-dog-rescue",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }

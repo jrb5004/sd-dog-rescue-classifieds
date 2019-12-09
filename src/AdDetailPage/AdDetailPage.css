@@ -1,0 +1,18 @@
+.ActualAd {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px white solid;
+    padding: 10px;
+}
+
+.ActualAd h2 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.ActualAd button {
+    margin-left: 37%;
+    margin-bottom: 5%;
+    width: 30%;
+}

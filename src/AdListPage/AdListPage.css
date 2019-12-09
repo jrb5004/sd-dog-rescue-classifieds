@@ -1,0 +1,17 @@
+.AdList h2, p, li {
+    text-align: center; 
+    margin: 5% 0;
+}
+
+.AdList h2 {
+    font-size: 36px;
+}
+
+
+.AdListMain {
+    border: 1px white solid;
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 100px;
+}

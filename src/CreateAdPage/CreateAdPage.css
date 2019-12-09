@@ -1,0 +1,27 @@
+.CreateAdForm form {
+    width: 40%;
+    padding: 2% 5%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+    border: 1px solid white;
+}
+
+.CreateAdForm h2 {
+    text-align: center;
+}
+
+.CreateAdForm form div {
+    margin: 3% auto;
+}
+
+.CreateAdForm form input {
+    width: 60%;
+}
+
+.DescriptionInput {
+    height: 80px;
+}
+
+
+
