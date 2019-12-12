@@ -1,84 +1,280 @@
 import React, {Component} from 'react'
 import { withRouter } from "react-router-dom"
 import './EditAdPage.css'
-//import ApiContext from '../ApiContext'
-//import config from '../config'
-
+import ApiContext from '../ApiContext'
+import config from '../config';
+//const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
+const API_BASE_URL = "http://localhost:8000"
 
 
 class EditAdPage extends Component {
-    static defaultProps ={
 
-    }
+      static defaultProps ={
+            updateDog: () => {},
+      }
 
-    goBack(e) {
-        e.preventDefault()
-        this.props.history.goBack()
-    } 
+      static contextType = ApiContext;
+
+      constructor() {
+            super();
+            this.state = {
+                  name: '',
+                  breed: '',
+                  size: '',
+                  gender: '',
+                  age: '',
+                  regionid: null,
+                  story: '',
+                  email: '',
+                  imageurl: '',
+            }
+            this.handleUpdateDog = this.handleUpdateDog.bind(this)
+      } 
+
+      componentDidMount() {
+            const dogId = this.props.match.params.adId
+            fetch(`${API_BASE_URL}/api/dogs/${dogId}`, 
+            {headers: {
+              'content-type': 'application/json',
+              'Authorization': `Bearer ${config.API_KEY}`
+            }})
+            .then((dogRes) => {
+                if (!dogRes.ok)
+                    return dogRes.json().then(e => Promise.reject(e));
+        
+                return dogRes.json();
+            })
+            .then((dog) => { 
+              this.setState({...dog})
+            })
+            .catch(error => {
+                console.error({error});
+            });
+          }
+
+      convertRegionName(name) {
+            if (name === 'City of San Diego'.toLowerCase()) return 1;
+            else if (name === 'North County Coastal'.toLowerCase()) return 2;
+            else if (name === 'North County Inland'.toLowerCase()) return 3;
+            else if (name === 'East County'.toLowerCase()) return 4;
+            else if (name === 'South County'.toLowerCase()) return 5;
+          } 
+
+      goBack(e) {
+            e.preventDefault()
+            this.props.history.goBack()
+      } 
+
+      setRegion(event) {
+            let name = event.target.value
+            let convertedName = this.convertRegionName(name)
+            this.setState({
+                regionid: convertedName
+            })
+      }
+      
+      setName(event) {
+            this.setState({
+                  name:event.target.value
+            })
+      }
+
+      setBreed(event) {
+            this.setState({
+                  breed:event.target.value
+            })
+      }
+
+      setSize(event) {
+            this.setState({
+                  size:event.target.value
+            })
+      }
+
+      setGender(event) {
+            this.setState({
+                  gender:event.target.value
+            })
+      }
+
+      setAge(event) {
+            this.setState({
+                  age:event.target.value
+            })
+      }
+
+      setStory(event) {
+            this.setState({
+                  story:event.target.value
+            })
+      }
+
+      setEmail(event) {
+            this.setState({
+                  email:event.target.value
+            })
+      }
+
+      setImageUrl(event) {
+            this.setState({
+                  imageurl:event.target.value
+            })
+      }
+      /*
+      selectOption(index){ 
+            document.getElementById("select_id").options.selectedIndex = index;
+          }
+      */
+
+      handleUpdateDog = e => {
+            e.preventDefault()
+        
+            if (!this.state.name || this.state.name.trim() == '') { 
+              alert('name is required') 
+              return 
+            }
+
+            if (!this.state.name || this.state.name.trim() == '') { 
+                  alert('name is required') 
+                  return 
+            }
     
+            if (!this.state.breed || this.state.breed.trim() == '') { 
+                  alert('breed is required') 
+                  return 
+                  }
+      
+            if (!this.state.size || this.state.size.trim() == '') { 
+            alert('size is required') 
+            return 
+            }
 
-    render() {
+            if (!this.state.gender || this.state.gender.trim() == '') { 
+                  alert('gender is required') 
+                  return 
+            }
 
-        let selectedAd = this.props.match.params.adId
-        let dogs = this.props.dogs
+            if (!this.state.age || this.state.age.trim() == '') { 
+                  alert('age is required') 
+                  return 
+            }
+            
+            if (!this.state.regionid) { 
+                  alert('region is required') 
+                  return 
+            }
 
-        let finalDog ={}
-        for (let dog of dogs) {
-            if (dog.id == selectedAd) finalDog=dog
-        }
+            if (!this.state.story || this.state.story.trim() == '') { 
+                  alert('story is required') 
+                  return 
+            }
+
+            if (!this.state.email || this.state.email.trim() == '') { 
+                  alert('email is required') 
+                  return 
+            }
+
+            if (!this.state.imageurl || this.state.imageurl.trim() == '') { 
+                  alert('email is required') 
+                  return 
+            }
+      
+            let body = {
+                  name: this.state.name,
+                  breed: this.state.breed,
+                  size: this.state.size,
+                  gender: this.state.gender,
+                  age: this.state.age,
+                  regionid: this.state.regionid,
+                  story: this.state.story,
+                  email: this.state.email,
+                  imageurl:this.state.imageurl
+            }
+
+            const dogId  = this.props.match.params.adId
+            console.log(dogId)
+        
+            fetch(`${API_BASE_URL}/api/dogs/${dogId}`, {
+              headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_KEY}`
+              },
+              method: 'PATCH',
+              body: JSON.stringify(body)
+            })
+        
+              .then(res => {
+                if (!res.ok)
+                  return (Promise.reject('Reject error'))
+                return (res.json())
+              })
+              .then((resDog) => {
+                this.context.updateDog(resDog)
+              })
+              .then(() => {
+                {this.props.history.goBack()}
+              })
+              .catch(error => {
+                console.error({ error })
+              })
+          }
     
-        return (
-          <div className='EditAdForm'>
-              <form>
-              <h2>Edit Listing</h2>
-              <div>
-                <p>Select Region:</p>
-                <select name='category'>
-                  <option> Select a Region </option>
-                  <option value='city of san diego'>City of San Diego</option>
-                  <option value='north county coastal'>North County Coastal</option>
-                  <option value='north county inland'>North County Inland</option>
-                  <option value='east county'>East County</option>
-                  <option value='south county'>South County</option>
-                </select><br></br>
-              </div>
-              <div>
-                <h4>Dog Name:</h4>
-                    <input className='NameInput' value={finalDog.name} type='text' name='name' id='name' required/>
-              </div>
-              <div>
-              <h4>Breed:</h4>
-                    <input className='BreedInput' value={finalDog.breed} type='text' name='breed' id='breed' required/>
-              </div>
-              <div>
-              <h4>Size/Weight:</h4>
-                    <input className='WeightInput' value={finalDog.size} type='text' name='weight' id='weight' required/>
-              </div>
-              <div>
-              <h4>Gender:</h4>
-                    <input className='GenderInput' value={finalDog.gender} type='text' name='gender' id='gender' required/>
-              </div>
-              <div>
-              <h4>Age:</h4>
-                    <input className='AgeInput' value={finalDog.age} type='text' name='age' id='age' required/>
-              </div>
-              <div>
-              <h4>Description:</h4>
-                    <textarea className='DescriptionInput' value={finalDog.story} type='text' name='description' id='description' required/>
-              </div>
-              <div>
-              <h4>You Email Address:</h4>
-                    <input className='EmailInput' value={finalDog.email} type='text' name='email' id='email' required/>
-              </div>
-              <div>
-              <h4>Upload Image:</h4>
-                    <input className='UpdloadImage' placeholder='please upload image of dog' type='text' name='image' id='image' required/>
-              </div>
-              <button type="submit" className='AddEditSubmitButton'>Submit</button>
-              <button onClick={(e) => this.goBack(e)}>Cancel</button>
-            </form>
-          </div>
-        )
+      render() {
+            //let activeId = this.state.regionid
+            //this.selectOption(activeId)
+        
+            return (
+            <div className='EditAdForm'>
+                  <form onSubmit={this.handleUpdateDog}>
+                        <h2>Edit Listing</h2>
+                              <div>
+                                    <p>Select Region:</p>
+                                    <select name='category' id="region_select" onChange={(e) => this.setRegion(e)}>
+                                          <option> Select a Region </option>
+                                          <option value='city of san diego'>City of San Diego</option>
+                                          <option value='north county coastal'>North County Coastal</option>
+                                          <option value='north county inland'>North County Inland</option>
+                                          <option value='east county'>East County</option>
+                                          <option value='south county'>South County</option>
+                                    </select><br></br>
+                              </div>
+                              <div>
+                                    <h4>Dog Name:</h4>
+                                          <input className='NameInput' value={this.state.name} type='text' name='name' id='name' onChange={(e) => this.setName(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Breed:</h4>
+                                          <input className='BreedInput' value={this.state.breed} type='text' name='breed' id='breed' onChange={(e) => this.setBreed(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Size/Weight:</h4>
+                                          <input className='WeightInput' value={this.state.size} type='text' name='weight' id='weight' onChange={(e) => this.setSize(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Gender:</h4>
+                                          <input className='GenderInput' value={this.state.gender} type='text' name='gender' id='gender' onChange={(e) => this.setGender(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Age:</h4>
+                                          <input className='AgeInput' value={this.state.age} type='text' name='age' id='age' onChange={(e) => this.setAge(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Description:</h4>
+                                          <textarea className='DescriptionInput' value={this.state.story} type='text' name='description' id='description' onChange={(e) => this.setStory(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>You Email Address:</h4>
+                                          <input className='EmailInput' value={this.state.email} type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
+                              </div>
+                              <div>
+                                    <h4>Upload Image:</h4>
+                                          <input className='UploadImage' value={this.state.imageurl} placeholder='please upload image of dog' type='text' name='image' id='image' onChange={(e) => this.setImageUrl(e)} required/>
+                              </div>
+                        <button type="submit" className='AddEditSubmitButton'>Submit</button>
+                        <button onClick={(e) => this.goBack(e)}>Cancel</button>
+                  </form>
+            </div>
+            )
       }
 }
 

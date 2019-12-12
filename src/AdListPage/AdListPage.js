@@ -1,21 +1,16 @@
 import React, {Component} from 'react'
 import { Route, Link } from 'react-router-dom'
 import './AdListPage.css'
+import ApiContext from '../ApiContext'
 
 
 class AdListPage extends Component {
-  static defaultProps = {
-    match: {
-        params: {}
-      }
-  }
- 
-   
+
+  static contextType = ApiContext
+
   render() {
-    console.log(this.props)
     let selectedRegion = this.props.match.params.regionId
-    let dogs = this.props.dogs
-    let regions = this.props.regions
+    const { regions, dogs } = this.context
 
     let finalRegion ={}
     for (let region of regions) {
