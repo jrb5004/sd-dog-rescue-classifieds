@@ -21,7 +21,7 @@ class HomePage extends Component {
                 <p className = 'intro'>The San Diego County Dog Rescue Classifieds is a public, online community open for all area dog lovers to view listings of adoptable dogs, connect with owners/shelters where they are currently housed, and post new listings of your own.</p>
                 <p className = 'intro'>Please take the time to peruse our listings before shopping for your new furry best friend!</p>
             </section>
-            <div className = "OptionsWrapper">
+            <div className = 'OptionsWrapper'>
             <section className = 'ViewListings'>
               <h2>Browse Listings!</h2>
               <p>Select your region to meet adoptable dogs in your area:</p>

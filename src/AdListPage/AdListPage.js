@@ -21,7 +21,6 @@ class AdListPage extends Component {
     for (let dog of dogs) {
         if (dog.regionid == selectedRegion) regionalList.push(dog)
       }
-    console.log(regionalList)
 
     return (
         <div className='AdList'>

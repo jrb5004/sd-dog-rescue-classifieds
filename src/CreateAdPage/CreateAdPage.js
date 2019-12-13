@@ -4,7 +4,6 @@ import './CreateAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
 const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-//const API_BASE_URL = "http://localhost:8000"
 
 
 class CreateAd extends Component {
@@ -97,16 +96,6 @@ class CreateAd extends Component {
 
       handleAddDog = e => {
             e.preventDefault()
-
-            /*
-            const values = Object.values(this.state)
-            
-            for(value of values) {
-                  if (!this.state.value || this.state.value.trim() == '') { 
-                        alert(`${value} is required`) 
-                        return 
-                      }
-            } */
       
             if (!this.state.name || this.state.name.trim() == '') { 
               alert('name is required') 
@@ -177,7 +166,7 @@ class CreateAd extends Component {
               })
               .then((dog) => {
                 this.context.addDog(dog)
-                this.props.history.push("/")
+                this.props.history.push(`/ad/${dog.id}`)
               })
               .catch(error => {
                 console.error({ error })
@@ -229,7 +218,7 @@ class CreateAd extends Component {
                               <h4>Your Email Address:</h4>
                                     <input className='EmailInput' placeholder='enter email address' type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
                         </div>
-                        <button type="submit" className='AddEditSubmitButton'>Submit Listing!</button>
+                        <button type='submit' className='AddEditSubmitButton'>Submit Listing!</button>
                   </form>
             </div>
             )}

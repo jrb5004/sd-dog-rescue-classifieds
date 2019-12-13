@@ -7,14 +7,14 @@ import Obfuscate from 'react-obfuscate'
 
 class AdDetailPage extends Component {
 
+  constructor() {
+    super()
+    this.state = { finalDog: {} }
+  }
+
   static contextType = ApiContext
 
-   goBack(e) {
-       e.preventDefault()
-       this.props.history.goBack()
-   }
-
-   render() {
+  componentDidMount() {
     let selectedAd = this.props.match.params.adId
     let dogs = this.context.dogs
 
@@ -22,7 +22,17 @@ class AdDetailPage extends Component {
     for (let dog of dogs) {
       if (dog.id == selectedAd) finalDog=dog
     }
-    console.log(finalDog.email)
+    this.setState({finalDog})
+  }
+
+   goBack(e) {
+       e.preventDefault()
+       this.props.history.push(`/region/${this.state.finalDog.regionid}`)
+   }
+
+   render() {
+  
+   let { finalDog } = this.state
 
    return (
      <div className='AdDetail'>

@@ -10,7 +10,7 @@ import ApiContext from './ApiContext';
 import config from './config';
 import './App.css';
 const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-//const API_BASE_URL = "http://localhost:8000"
+
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.title = "SD County Dog Rescue"
+    document.title = 'SD County Dog Rescue'
     Promise.all([
       fetch(`${API_BASE_URL}/api/regions`, {headers: {
           'content-type': 'application/json',

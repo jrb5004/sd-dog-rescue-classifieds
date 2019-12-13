@@ -4,7 +4,6 @@ import './EditAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
 const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-//const API_BASE_URL = "http://localhost:8000"
 
 
 class EditAdPage extends Component {
@@ -120,11 +119,6 @@ class EditAdPage extends Component {
                   imageurl:event.target.value
             })
       }
-      /*
-      selectOption(index){ 
-            document.getElementById("select_id").options.selectedIndex = index;
-          }
-      */
 
       handleUpdateDog = e => {
             e.preventDefault()
@@ -192,7 +186,6 @@ class EditAdPage extends Component {
             }
 
             const dogId  = this.props.match.params.adId
-            console.log(dogId)
         
             fetch(`${API_BASE_URL}/api/dogs/${dogId}`, {
               headers: {
@@ -220,16 +213,14 @@ class EditAdPage extends Component {
           }
     
       render() {
-            //let activeId = this.state.regionid
-            //this.selectOption(activeId)
-        
+ 
             return (
             <div className='EditAdForm'>
                   <form onSubmit={this.handleUpdateDog}>
                         <h2>Edit Listing</h2>
                               <div>
-                                    <p className="SelectRegion">Select Region:</p>
-                                    <select name='category' id="region_select" onChange={(e) => this.setRegion(e)}>
+                                    <p className='SelectRegion'>Select Region:</p>
+                                    <select name='category' id="region_select" value='city of san diego' onChange={(e) => this.setRegion(e)}>
                                           <option> Select a Region </option>
                                           <option value='city of san diego'>City of San Diego</option>
                                           <option value='north county coastal'>North County Coastal</option>
