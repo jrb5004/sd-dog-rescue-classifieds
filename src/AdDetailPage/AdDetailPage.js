@@ -33,7 +33,7 @@ class AdDetailPage extends Component {
          <p><span className='DetailHeader'>Age:</span> {finalDog.age}</p>
          <p><span className='DetailHeader'>Size:</span> {finalDog.size}</p>
          <p><span className='DetailHeader'>{finalDog.name}'s Story:</span><br></br>{finalDog.story}</p>
-         <div className ='EmailLink'><p>Click to arrange a visit with {finalDog.name}:<br></br>  
+         <div className ='EmailLink'><p>Click to request photos and/or arrange a visit with {finalDog.name}:<br></br>  
           <Obfuscate
             email= {finalDog.email}
             headers={{
