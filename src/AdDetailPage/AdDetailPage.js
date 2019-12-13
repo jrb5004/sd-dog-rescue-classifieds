@@ -44,6 +44,15 @@ class AdDetailPage extends Component {
         </p></div>
          <button onClick={(e) => this.goBack(e)}>Back to Listings</button>
          <div className ='EditLink'><p>Is this your ad?  If so, you can edit it <Link to={`/editad/${finalDog.id}`}>here.</Link></p></div>
+         <div className ='EmailAdminLink'><p>Has {finalDog.name} been adopted?  Let us know so we can hear about your success story and remove this ad.<br></br>  
+          <Obfuscate
+            email= 'admin@sdcountydogrescue.org'
+            headers={{
+              subject: `Dog Addopted!`,
+            }}
+            >
+          </Obfuscate>
+        </p></div>
       </section>
      </div>
    )

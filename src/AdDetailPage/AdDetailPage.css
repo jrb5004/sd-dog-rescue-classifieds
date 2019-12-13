@@ -31,8 +31,12 @@
     font-size: 20px;
 }
 
-.EmailLink p, .EditLink p{
+.EmailLink p, .EditLink p, .EmailAdminLink p{
     text-align: center;
+}
+
+.EditLink p, .EmailAdminLink p {
+    font-size: 13px;
 }
 
 @media all and (min-width: 700px) {
