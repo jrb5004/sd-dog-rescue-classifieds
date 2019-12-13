@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 * {
     margin: 0;
@@ -6,6 +7,14 @@
 
 html, body {
     height: 100%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+main {
+    color: #fffdd0;
 }
 
 a {
@@ -20,7 +29,7 @@ ul {
 .App {
     background-image: 
     linear-gradient(
-        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4),
         rgba(0, 0, 0, 0.2)
       ),
         url("./Images/sky.JPG");

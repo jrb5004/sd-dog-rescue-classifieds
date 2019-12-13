@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom"
 import './EditAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
-//const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-const API_BASE_URL = "http://localhost:8000"
+const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
+//const API_BASE_URL = "http://localhost:8000"
 
 
 class EditAdPage extends Component {
@@ -228,7 +228,7 @@ class EditAdPage extends Component {
                   <form onSubmit={this.handleUpdateDog}>
                         <h2>Edit Listing</h2>
                               <div>
-                                    <p>Select Region:</p>
+                                    <p className="SelectRegion">Select Region:</p>
                                     <select name='category' id="region_select" onChange={(e) => this.setRegion(e)}>
                                           <option> Select a Region </option>
                                           <option value='city of san diego'>City of San Diego</option>
@@ -265,10 +265,6 @@ class EditAdPage extends Component {
                               <div>
                                     <h4>You Email Address:</h4>
                                           <input className='EmailInput' value={this.state.email} type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
-                              </div>
-                              <div>
-                                    <h4>Upload Image:</h4>
-                                          <input className='UploadImage' value={this.state.imageurl} placeholder='please upload image of dog' type='text' name='image' id='image' onChange={(e) => this.setImageUrl(e)} required/>
                               </div>
                         <button type="submit" className='AddEditSubmitButton'>Submit</button>
                         <button onClick={(e) => this.goBack(e)}>Cancel</button>

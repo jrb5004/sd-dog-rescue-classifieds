@@ -1,10 +1,36 @@
-
+@import url('https://fonts.googleapis.com/css?family=Lilita+One');
 
 h1 {
     color: #204759;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 40px;
-    font-size: 35px;
+    font-size: 2.2rem;
+    font-family: 'Lilita One', cursive;
+    font-weight: normal;
+    padding: 1%;
+}
+
+hr {
+    display: block;
+    height: 5px;
+    border: 0;
+    border-top: 1px double #204759;
+    margin: 1em 1em;
+    padding: 0;
+}
+
+@media all and (min-width: 650px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+}
+
+@media all and (min-width: 1150px) {
+    h1 {
+        font-size: 4rem;
+    }
+    
 }
 

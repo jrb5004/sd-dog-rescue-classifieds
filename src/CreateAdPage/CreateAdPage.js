@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom"
 import './CreateAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
-//const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-const API_BASE_URL = "http://localhost:8000"
+const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
+//const API_BASE_URL = "http://localhost:8000"
 
 
 class CreateAd extends Component {
@@ -196,7 +196,7 @@ class CreateAd extends Component {
                   <form onSubmit={this.handleAddDog}>
                         <h2>Post New Listing</h2>
                         <div>
-                              <p>Select Region:</p>
+                              <p className="SelectRegion">Location:</p>
                               <select name='category' onChange={(e) => this.setRegion(e)}>
                                     <option> Select a Region </option>
                                     <option value='city of san diego'>City of San Diego</option>
@@ -233,10 +233,6 @@ class CreateAd extends Component {
                         <div>
                               <h4>You Email Address:</h4>
                                     <input className='EmailInput' placeholder='enter email address' type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
-                        </div>
-                        <div>
-                              <h4>Upload Image:</h4>
-                                    <input className='UpdloadImage' placeholder='please upload image of dog' type='text' name='image' id='image' onChange={(e) => this.setImageUrl(e)} required/>
                         </div>
                         <button type="submit" className='AddEditSubmitButton'>Submit Listing!</button>
                   </form>

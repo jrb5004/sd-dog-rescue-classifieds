@@ -28,12 +28,12 @@ class AdDetailPage extends Component {
      <div className='AdDetail'>
        <section className='ActualAd'>
          <h2>{finalDog.name}</h2>
-         <p>Breed: {finalDog.breed}</p>
-         <p>Gender: {finalDog.gender}</p>
-         <p>Age: {finalDog.age}</p>
-         <p>Size: {finalDog.size}</p>
-         <p>{finalDog.name}'s Story:<br></br>{finalDog.story}</p>
-         <p>Clik to arrange a visit with {finalDog.name}:<br></br>  
+         <p><span className='DetailHeader'>Breed:</span> {finalDog.breed}</p>
+         <p><span className='DetailHeader'>Gender:</span> {finalDog.gender}</p>
+         <p><span className='DetailHeader'>Age:</span> {finalDog.age}</p>
+         <p><span className='DetailHeader'>Size:</span> {finalDog.size}</p>
+         <p><span className='DetailHeader'>{finalDog.name}'s Story:</span><br></br>{finalDog.story}</p>
+         <div className ='EmailLink'><p>Click to arrange a visit with {finalDog.name}:<br></br>  
           <Obfuscate
             email= {finalDog.email}
             headers={{
@@ -41,9 +41,9 @@ class AdDetailPage extends Component {
             }}
             >
           </Obfuscate>
-        </p>
+        </p></div>
          <button onClick={(e) => this.goBack(e)}>Back to Listings</button>
-         <p>Is this your ad?  If so, you can edit it <Link to={`/editad/${finalDog.id}`}>here.</Link></p>
+         <div className ='EditLink'><p>Is this your ad?  If so, you can edit it <Link to={`/editad/${finalDog.id}`}>here.</Link></p></div>
       </section>
      </div>
    )

@@ -7,11 +7,33 @@
     font-size: 36px;
 }
 
+.AdList p {
+    padding: 0 5%;
+}
+
 
 .AdListMain {
-    border: 1px white solid;
+    border: 3px solid #fffee6;
     width: 20%;
     margin-right: auto;
     margin-left: auto;
-    min-height: 100px;
+    width: 70%;
+    min-height: 30vh;
+}
+
+
+@media all and (min-width: 800px) {
+    .AdListMain {
+        width: 50%;
+    }
+
+    .AdList p {
+        font-size: 20px;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .AdListMain {
+        width: 35%;
+    }
 }
