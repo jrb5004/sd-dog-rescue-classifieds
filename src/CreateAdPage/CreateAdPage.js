@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom"
 import './CreateAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
-//const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-const API_BASE_URL = "http://localhost:8000"
+const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
+//const API_BASE_URL = "http://localhost:8000"
 
 
 class CreateAd extends Component {
