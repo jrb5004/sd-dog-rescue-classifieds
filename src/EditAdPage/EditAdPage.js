@@ -25,7 +25,6 @@ class EditAdPage extends Component {
                   regionid: null,
                   story: '',
                   email: '',
-                  imageurl: '',
             }
             this.handleUpdateDog = this.handleUpdateDog.bind(this)
       } 
@@ -114,12 +113,6 @@ class EditAdPage extends Component {
             })
       }
 
-      setImageUrl(event) {
-            this.setState({
-                  imageurl:event.target.value
-            })
-      }
-
       handleUpdateDog = e => {
             e.preventDefault()
         
@@ -168,11 +161,6 @@ class EditAdPage extends Component {
                   return 
             }
 
-            if (!this.state.imageurl || this.state.imageurl.trim() == '') { 
-                  alert('email is required') 
-                  return 
-            }
-      
             let body = {
                   name: this.state.name,
                   breed: this.state.breed,
@@ -182,7 +170,6 @@ class EditAdPage extends Component {
                   regionid: this.state.regionid,
                   story: this.state.story,
                   email: this.state.email,
-                  imageurl:this.state.imageurl
             }
 
             const dogId  = this.props.match.params.adId
