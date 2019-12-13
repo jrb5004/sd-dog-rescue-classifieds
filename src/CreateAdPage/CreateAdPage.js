@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom"
 import './CreateAdPage.css'
 import ApiContext from '../ApiContext'
 import config from '../config';
-const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
-//const API_BASE_URL = "http://localhost:8000"
+//const API_BASE_URL = 'https://nameless-sierra-59942.herokuapp.com'
+const API_BASE_URL = "http://localhost:8000"
 
 
 class CreateAd extends Component {
@@ -148,10 +148,6 @@ class CreateAd extends Component {
                   return 
                   }
 
-            if (!this.state.imageurl || this.state.imageurl.trim() == '') { 
-                  alert('email is required') 
-                  return 
-                  }
         
             let body = {
               name: this.state.name,
@@ -162,7 +158,6 @@ class CreateAd extends Component {
               regionid: this.state.regionid,
               story: this.state.story,
               email: this.state.email,
-              imageurl:this.state.imageurl
             }
             
             fetch(`${API_BASE_URL}/api/dogs`, {
@@ -231,7 +226,7 @@ class CreateAd extends Component {
                                     <textarea className='DescriptionInput' placeholder='enter description' type='text' name='description' id='description' onChange={(e) => this.setStory(e)} required/>
                         </div>
                         <div>
-                              <h4>You Email Address:</h4>
+                              <h4>Your Email Address:</h4>
                                     <input className='EmailInput' placeholder='enter email address' type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
                         </div>
                         <button type="submit" className='AddEditSubmitButton'>Submit Listing!</button>
