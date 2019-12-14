@@ -218,7 +218,9 @@ class CreateAd extends Component {
                               <h4>Your Email Address:</h4>
                                     <input className='EmailInput' placeholder='enter email address' type='text' name='email' id='email' onChange={(e) => this.setEmail(e)} required/>
                         </div>
-                        <button type='submit' className='AddEditSubmitButton'>Submit Listing!</button>
+                        <div className = 'ButtonWrapper'>
+                              <button type='submit' className='AddEditSubmitButton'>Submit Listing!</button>
+                        </div>
                   </form>
             </div>
             )}
