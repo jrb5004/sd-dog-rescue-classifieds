@@ -8,6 +8,11 @@ class AdListPage extends Component {
 
   static contextType = ApiContext
 
+  goBack(e) {
+    e.preventDefault()
+    this.props.history.push(`/`)
+}
+
   render() {
     let selectedRegion = this.props.match.params.regionId
     const { regions, dogs } = this.context
@@ -33,6 +38,9 @@ class AdListPage extends Component {
               </li>
               )}
             </ul>
+          <div className ='ButtonWrapper'>
+            <button onClick={(e) => this.goBack(e)}>Back</button>
+          </div>
         </div>
       )
  }

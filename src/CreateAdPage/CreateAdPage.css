@@ -52,10 +52,7 @@
 .CreateAdForm button {
     width: 30%;
     height: 2rem;
-    background-color: #204759;
-    color: #fffee6;
-    font-weight: bold;
-    margin-left: 40%;
+    background-color: white;
 }
 
 @media all and (min-width: 700px) {
